@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div>
       <div>
-      <button onClick={asyncCall}>Default</button>;
+      <button class="button_call_function" onClick={asyncCall}>Default</button>;
       </div>
     </div>
   );

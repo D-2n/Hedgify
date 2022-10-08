@@ -1,9 +1,8 @@
 /* ./src/index.css */
 body{
     display:grid;
-    background:url("logo.png") no-repeat center center fixed;
+    background:url("utils/logo.png") no-repeat center center fixed;
     background-color:rgb(39,39,39);
-
 }
 header{
     margin-left:5%;
@@ -62,6 +61,11 @@ height:1.7em;
     left:0;
     bottom:0;
     right:0;
+}
+
+.button_call_function{
+    padding: 28px 80px;
+    border-radius: 8px;
 }
 
 footer a{
