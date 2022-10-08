@@ -1,5 +1,92 @@
 /* ./src/index.css */
-@tailwind base;
-@tailwind components;
+body{
+    display:grid;
+    background:url("logo.png") no-repeat center center fixed;
+    background-color:rgb(39,39,39);
 
-@tailwind utilities;
+}
+header{
+    margin-left:5%;
+}
+.header{
+    display:flex;
+    align-items:center;
+    margin:0;
+    padding:0;
+    background-color:black;
+    height:5em;
+    border-radius:0.5em;
+}
+.walletlink{
+min-width:10%;
+font-family:Arial, sans-serif;
+display: flex;
+flex-direction: row;
+-webkit-box-align: center;
+align-items: center;
+-webkit-box-pack: center;
+justify-content: center;
+border: 2px solid transparent;
+border-radius: 0.5rem;
+background: rgb(39, 39, 39);
+color: rgb(255, 255, 255);
+cursor: pointer;
+user-select: none;
+font-size: 1.2rem;
+transition: filter 200ms ease-in-out 0s;
+width:20%;
+margin-left:2%;
+font-size:1.1em;
+height:1.7em;
+}
+.walletlink:hover{
+    background-color:rgb(30,30,30);
+}
+.mainpage{
+    margin-left:40%
+}
+.logo{
+    background-color:red;
+    color:white;
+    margin-left:50%;
+}
+.namebutton{
+    background-color:rgb(30,30,30);
+    color:white;
+    border:2px solid transparent;
+}
+.flex{
+}footer {
+    height:5vw; 
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+}
+
+footer a{
+    font:Arial,sans-serif;
+    font-size:1.5em;
+    text-decoration: none;
+    color: white;
+    border-radius: 10%;
+    margin:3em;
+}
+
+.float-container {
+    display: flex;
+}
+.float-child {
+background-color:rgb(39, 39, 39) ;
+border-radius: 5px;
+margin: 6px;
+}
+
+.LinkedIn:hover{
+    color: rgb(144, 190, 243);
+    border-radius: 7px;
+}
+.Github:hover{
+    color: rgb(144, 190, 243);
+    border-radius: 7px;
+}
