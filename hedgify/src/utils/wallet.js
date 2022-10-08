@@ -1,6 +1,6 @@
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import config from "../config";
+import { config } from "../config";
 
 const preferredNetwork = "ghostnet";
 const options = {

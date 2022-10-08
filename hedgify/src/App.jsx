@@ -1,3 +1,7 @@
+import { Routes, Route } from "react-router-dom"
+
+import Home from './components/Home'
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -10,10 +14,13 @@ const App = () => {
             <Navbar />
           </div>
         </header>
-        <div className="mainpage">
-          <h1>
-          </h1>
-        </div>
+        <Routes>
+        <Route path="/" element={
+          <main>
+            <Home />
+          </main>
+        } />
+      </Routes>
         <Footer />        
       </body>
     </html>

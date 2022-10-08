@@ -6,8 +6,8 @@ import {
 } from "../utils/wallet";
 import { useEffect, useState } from "react";
 
- import { TezosToolkit } from '@taquito/taquito';
- const Tezos = new TezosToolkit('https://ghostnet.tezos.marigold.dev/');
+import { TezosToolkit } from '@taquito/taquito';
+const Tezos = new TezosToolkit('https://ghostnet.tezos.marigold.dev/');
 
 
 export default function Navbar() {
@@ -35,8 +35,7 @@ export default function Navbar() {
     const func = async () => {
       const account = await getActiveAccount();
       if (account) {
-        setWallet(account.address);
-        var k=account.address
+        setWallet(account.address)
       }
     };
     func();
