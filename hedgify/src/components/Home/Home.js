@@ -8,7 +8,7 @@ const Home = () => {
     <div class="section-center">
       {name && (
         <h1>
-          Hi, wee are <span className='about__name'>{name}.</span>
+          We are <span className='about__name'>{name}.</span>
         </h1>
       )}
 

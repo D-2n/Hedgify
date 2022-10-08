@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { header } from '../../constants'
+import { header } from '../../constants'  
 import './Header.css'
-
 
 const Header = ({ account, setAccount }) => {
 
@@ -9,10 +8,10 @@ const Header = ({ account, setAccount }) => {
 
   const { title } = header
   return (
-    <header className='header center'>
+    <header className='center'>
       <h3>
-        <button type="button" className='link' onClick={() => {
-          navigage(`/`)
+        <button type="button" className='link_wallet' onClick={() => {
+          navigage(`  /`)
         }}>{title}</button>
       </h3>
     </header>

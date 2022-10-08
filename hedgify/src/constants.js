@@ -1,16 +1,15 @@
 const header = {
   // all the properties are optional - can be left empty or deleted
   homepage: '',
-  title: 'HOME.',
+  title: 'Connect Temple Wallet',
 }
 
 const about = {
   // all the properties are optional - can be left empty or deleted
-  name: 'Hackaton Team',
-  role: 'Team wee work on Tezos',
+  name: 'Hedgify',
+  role: 'Test slogan',
   description:
-    'website',
-  resume: 'https://tezos.com/',
+    <a href='https://tezos.com/'>This is the home page</a>,
   social: {
     linkedin: 'https://linkedin.com',
     github: 'https://github.com',
@@ -20,6 +19,7 @@ const contact = {
   // email is optional - if left empty Contact section won't show up
   email: 'hackaton-team@mail.com',
 }
+
 
 const baseUrl = ""
 
