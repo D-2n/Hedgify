@@ -45,11 +45,20 @@ height:1.7em;
 .mainpage{
     margin-left:40%
 }
+#ind{
+    display:flex;
+    position:fixed;
+    margin-left:70%;
+    margin-right:5%;
+    width:10%;
+    background-color:brown;
+}
 .logo{
+    position:fixed;
     font:Arial, sans-serif;
     display:flex;
     color:white;
-    margin-left:50%;
+    margin-left:87%;
     width:200px;
     height:70px;
 }
@@ -58,7 +67,7 @@ height:1.7em;
     height:70px;
 }
 .logo p{
-    margin-top:15%;
+    margin-top:13%;
     font-family:Arial, sans-serif;
 }
 .namebutton{

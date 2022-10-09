@@ -8,9 +8,12 @@ import { useEffect, useState } from "react";
 
 import { TezosToolkit } from '@taquito/taquito';
 const Tezos = new TezosToolkit('https://ghostnet.tezos.marigold.dev/');
+const Tezos1 = new TezosToolkit('https://mainnet.api.tez.ie')
 
 let userAddress;
 let balance;
+let balance1;
+let conn;
 export default function Navbar() {
   
   const [wallet, setWallet] = useState(null);
@@ -20,15 +23,19 @@ export default function Navbar() {
     setWallet(wallet);
     userAddress = await wallet.slice(0,wallet.length);
     const usr_balance = await Tezos.tz.getBalance(wallet.slice(0,wallet.length));
+    const usr_balance1 = await Tezos1.tz.getBalance(wallet.slice(0,wallet.length))
     balance = usr_balance.toNumber()/1000000;
-    console.log('aaaaaa');
-    console.log(balance);
-    document.getElementById('bal').innerHTML = `Balance: ${balance} Tez`
+    balance1 = usr_balance1.toNumber()/1000000;
+    document.getElementById('bal').innerHTML = `Test: ${balance} Tez`;
+    document.getElementById('bal1').innerHTML=`Main: ${balance1 } Tez`;
+    document.getElementById('ind').style.display='none';
   };
   const handleDisconnectWallet = async () => {
     const { wallet } = await disconnectWallet();
     setWallet(wallet);
-    document.getElementById('bal').innerHTML = `Balance: 0 Tez`
+    document.getElementById('bal').innerHTML = `Test: 0 Tez`
+    document.getElementById('bal1').innerHTML=`Main: 0 Tez`
+    document.getElementById('ind').style.display='flex';
   };
 
   useEffect(() => {
@@ -55,8 +62,12 @@ export default function Navbar() {
             : "Connect Wallet"}
         </button>
         <div id='bal' className='walletlink'>
-          Balance: 0 Tez
+          Test: 0 Tez
         </div>
+        <div id='bal1' className='walletlink'>
+          Main: 0 Tez
+        </div>
+        <div id='ind' class='walletlink'>Not connected!</div>
         <div className='logo'>
           <p>HEDGIFY</p>
           <img alt="oui" src='logo.png'/>
