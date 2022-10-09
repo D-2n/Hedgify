@@ -19,10 +19,13 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <div>
-      <button class="button_call_function" onClick={asyncCall}>Default</button>;
+    <div class='bbuttoner'>
+      <div class='buttoner'>
+      <button class="button_call_function" onClick={asyncCall}>Start protocol
+      </button>
+
       </div>
+      
     </div>
   );
 }

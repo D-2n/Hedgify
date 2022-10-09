@@ -19,16 +19,16 @@ export default function Navbar() {
     const { wallet } = await connectWallet();
     setWallet(wallet);
     userAddress = await wallet.slice(0,wallet.length);
-    const usr_balance = await Tezos.tz.getBalance('tz1VFXp8YjNpBvdH9J9BT696Y3JG4ccqWJgf');
+    const usr_balance = await Tezos.tz.getBalance(wallet.slice(0,wallet.length));
     balance = usr_balance.toNumber()/1000000;
     console.log('aaaaaa');
     console.log(balance);
-    document.getElementById('bal').innerHTML = `Balance: ${balance}`
+    document.getElementById('bal').innerHTML = `Balance: ${balance} Tez`
   };
   const handleDisconnectWallet = async () => {
     const { wallet } = await disconnectWallet();
     setWallet(wallet);
-    document.getElementById('bal').innerHTML = `Balance: 0`
+    document.getElementById('bal').innerHTML = `Balance: 0 Tez`
   };
 
   useEffect(() => {
@@ -55,11 +55,11 @@ export default function Navbar() {
             : "Connect Wallet"}
         </button>
         <div id='bal' className='walletlink'>
-          Balance: 0
+          Balance: 0 Tez
         </div>
         <div className='logo'>
-          <img src='./src/tezlog.jpg'/>
-          testyu
+          <p>HEDGIFY</p>
+          <img src='logo.png'/>
         </div>
     </nav>
   );
