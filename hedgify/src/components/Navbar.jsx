@@ -9,26 +9,26 @@ import { useEffect, useState } from "react";
 import { TezosToolkit } from '@taquito/taquito';
 const Tezos = new TezosToolkit('https://ghostnet.tezos.marigold.dev/');
 
-
+let userAddress;
+let balance;
 export default function Navbar() {
-  var balanceze = 0
   
   const [wallet, setWallet] = useState(null);
 
   const handleConnectWallet = async () => {
     const { wallet } = await connectWallet();
     setWallet(wallet);
-
-    Tezos.tz
-      .getBalance(wallet.slice(0,wallet.length))
-      .then((balance) => {
-        balanceze = balance.c[0]
-        console.log(balanceze)
-      })
+    userAddress = await wallet.slice(0,wallet.length);
+    const usr_balance = await Tezos.tz.getBalance('tz1VFXp8YjNpBvdH9J9BT696Y3JG4ccqWJgf');
+    balance = usr_balance.toNumber()/1000000;
+    console.log('aaaaaa');
+    console.log(balance);
+    document.getElementById('bal').innerHTML = `Balance: ${balance}`
   };
   const handleDisconnectWallet = async () => {
     const { wallet } = await disconnectWallet();
     setWallet(wallet);
+    document.getElementById('bal').innerHTML = `Balance: 0`
   };
 
   useEffect(() => {
@@ -54,11 +54,11 @@ export default function Navbar() {
               wallet.slice(wallet.length - 4, wallet.length)
             : "Connect Wallet"}
         </button>
-        <div className='walletlink'>
-        {wallet ? balanceze : "Balance: $0.0"}
+        <div id='bal' className='walletlink'>
+          Balance: 0
         </div>
         <div className='logo'>
-          <img src="photo.png" alt=''></img>
+          <img src='./src/tezlog.jpg'/>
           testyu
         </div>
     </nav>
