@@ -1,14 +1,14 @@
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
-import { config } from "../config";
+import config from "../config";
 
-const preferredNetwork = "ghostnet";
+const preferredNetwork = "mainnet";
 const options = {
   name: "HEDGIFY",
   iconUrl: "https://tezostaquito.io/img/favicon.png",
   preferredNetwork: preferredNetwork,
 };
-const rpcURL = "https://ghostnet.tezos.marigold.dev/";
+const rpcURL = "https://uoi3x99n7c.tezosrpc.midl.dev";
 const wallet = new BeaconWallet(options);
 
 const getActiveAccount = async () => {
@@ -51,15 +51,19 @@ const checkIfWalletConnected = async (wallet) => {
   }
 };
 
-export const changeName = async (name) => {
+
+export const getValue = async () => {
   // const wallet = new BeaconWallet(options);
   const response = await checkIfWalletConnected(wallet);
-
   if (response.success) {
     const tezos = new TezosToolkit(rpcURL);
     tezos.setWalletProvider(wallet);
-    const contract = await tezos.wallet.at(config.contractAddress);
-    const operation = await contract.methods.default(name).send();
+    const token = [5];
+    const contract = await tezos.wallet.at(config.PriceFeedProxyAddress);
+    const operation = await contract.methods.getPrice(token).send();
+    // const operation = await contract.methods.updateInterest(token).send();
+    console.log("getValue");
+
     const result = await operation.confirmation();
     console.log(result);
   }

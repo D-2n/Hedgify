@@ -1,5 +1,5 @@
 const config = {
-  contractAddress: "KT1T7Rx3uzj5wwvFVrCnHxo64RvFtS8awJK7",
+  PriceFeedProxyAddress: "KT1EyM6GsgfPyGKh9Nec2PcDNNrEZVGXQp7w",
 };
 
-export { config }
+export default config;

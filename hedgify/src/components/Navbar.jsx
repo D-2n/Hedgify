@@ -59,7 +59,7 @@ export default function Navbar() {
         </div>
         <div className='logo'>
           <p>HEDGIFY</p>
-          <img src='logo.png'/>
+          <img alt="oui" src='logo.png'/>
         </div>
     </nav>
   );
