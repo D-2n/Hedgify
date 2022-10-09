@@ -56,13 +56,36 @@ export const getValue = async () => {
   // const wallet = new BeaconWallet(options);
   const response = await checkIfWalletConnected(wallet);
   if (response.success) {
+
+    const token1 = 2;
+    const token2 = 3; // or new BigNumber(0) or "0"
+    const amount = 2300000000000000000; // or new BigNumber(10_000_000) or "10000000"
+    const minReceived = 1
     const tezos = new TezosToolkit(rpcURL);
     tezos.setWalletProvider(wallet);
-    const token = [5];
-    const contract = await tezos.wallet.at(config.PriceFeedProxyAddress);
-    const operation = await contract.methods.getPrice(token).send();
-    // const operation = await contract.methods.updateInterest(token).send();
-    console.log("getValue");
+    const yupana = await tezos.contract.at(config.yTokenAddress);
+    const kUSd = await tezos.contract.at(config.kUSDToken);
+    const proxy = await tezos.contract.at(config.PriceFeedProxyAddress);
+    const batchArray = [
+      {
+        kind: "transaction",
+        ...kUSd.methods.approve(config.yTokenAddress, amount).toTransferParams(),
+      },
+      {
+        kind: "transaction",
+        ...proxy.methods.getPrice([token1, token2]).toTransferParams(),
+      },
+      {
+        kind: "transaction",
+        ...yupana.methods.updateInterest(token2).toTransferParams(),
+      },
+      {
+        kind: "transaction",
+        ...yupana.methods.mint(token1, amount, minReceived).toTransferParams(),
+      },
+      ];
+    const batch = await tezos.wallet.batch(batchArray);
+    const operation = await batch.send();
 
     const result = await operation.confirmation();
     console.log(result);
